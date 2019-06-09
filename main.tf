@@ -51,7 +51,7 @@ output "private_key_pem" {
 
 
 module "dns" {
-    source = "../../modules/dns/direct"
+    source = "./modules/dns/direct"
     dns_domain_name               = "${var.demo_domain_name}" 
     dns_domain_subdomain          = "${var.demo_domain_subdomain}" 
     dns_cname_value               = "${module.aws-demo-env.demo_env_elb_dnsname}"
@@ -59,7 +59,7 @@ module "dns" {
 
 
 module "aws-demo-env" {    
-  source = "../../modules/aws-demo-environment"
+  source = "./modules/aws-demo-environment"
     demo_env_nginx_count            = "2"
     demo_env_cert_body              = "${acme_certificate.certificate.certificate_pem}"      
     demo_env_cert_chain             = "${acme_certificate.certificate.issuer_pem}" 
